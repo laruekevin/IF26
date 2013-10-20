@@ -1,5 +1,5 @@
 package com.utt.if26_thikev;
-
+//Ceci est un putin de test de merde
 public class DonneesConnection {
 	int valide;
 	String message;
