@@ -2,13 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/larue_000/Desktop/eclipse/google-gson-2.2.4-release/google-gson-2.2.4/gson-2.2.4.jar" sourcepath="C:/Users/larue_000/Desktop/eclipse/google-gson-2.2.4-release/google-gson-2.2.4/gson-2.2.4-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/C:/Users/larue_000/Desktop/eclipse/google-gson-2.2.4-release/google-gson-2.2.4/gson-2.2.4-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
