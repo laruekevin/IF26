@@ -57,7 +57,7 @@ public class webService {
 			return null;
 
 		}
-		
+	
 		public String search(String search) throws JSONException{
 			HttpGet httpget= new HttpGet("http://wwww.webservice.kevin-larue.fr/connexion.php?login=thikev&pass=if262012");
 			HttpClient httpclient = new DefaultHttpClient();
