@@ -15,14 +15,13 @@ import org.json.JSONObject;
 import com.utt.if26_thikev.R;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.util.Log;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.widget.Toast;
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends FragmentActivity {
 	private String jsonResult;
 	 private String url = "";
 	 private DonneesConnection dc = new DonneesConnection();
@@ -33,7 +32,7 @@ public class HomeActivity extends Activity {
 		Intent intent = getIntent();
         Bundle bund = intent.getExtras();
 
-        url = "http://blog.kevin-larue.fr/connexion.php?login="+bund.getString("login")+"&pass="+bund.getString("password");
+        url = "http://train.sandbox.eutech-ssii.com/messenger/login.php?email="+bund.getString("login")+"&password="+bund.getString("password");
         accessWebService();
     
 	}
@@ -99,30 +98,29 @@ public class HomeActivity extends Activity {
 	 
 	 // build hash set for list view
 	 public void ListDrwaer() {
-	  try {
-	   JSONObject jsonResponse = new JSONObject(jsonResult);
-	  
-	   	dc.setValide(Integer.parseInt(jsonResponse.getString("valide")));
-	    dc.setMessage(jsonResponse.getString("message"));
-	    dc.setToken(jsonResponse.getString("token"));
-	    dc.setUsername(jsonResponse.getString("username"));
-	    
-	  } catch (JSONException e) {
-	   Toast.makeText(getApplicationContext(), "Error" + e.toString(),
-	     Toast.LENGTH_SHORT).show();
-	  }
-	  AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	  if(dc.getValide() == 1){	  
-		  builder.setMessage("Bonjour "+dc.getUsername());
-		  builder.create().show();
-		  
-	  }
-	  else{
-		  builder.setMessage(dc.getMessage());
-		  builder.create().show();
-		  Intent intent = new Intent(this, MainActivity.class);
-	      startActivity(intent);
-	  }
+		 try {
+	            JSONObject jsonResponse = new JSONObject(jsonResult);
+
+	            dc.setError(jsonResponse.getBoolean("error"));
+	            dc.setToken(jsonResponse.getString("token"));
+
+        } catch (JSONException e) {
+	            Toast.makeText(getApplicationContext(), "Error" + e.toString(),
+	            Toast.LENGTH_SHORT).show();
+	    }
+		 
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        if(!dc.getError()){
+            builder.setMessage("Bonjour : "+dc.getToken());
+            builder.create().show();
+
+        }
+        else{
+            builder.setMessage("erreur de connexion");
+		    builder.create().show();
+		    Intent intent = new Intent(this, MainActivity.class);
+	        startActivity(intent);
+    	}
 	  
 	  
 	  

@@ -4,15 +4,15 @@ import com.utt.if26_thikev.HomeActivity;
 import com.utt.if26_thikev.R;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MainActivity extends Activity implements OnClickListener  {
+public class MainActivity extends FragmentActivity implements OnClickListener  {
 	EditText login = null;
     EditText password = null;
     Button buttonSubmit = null;
