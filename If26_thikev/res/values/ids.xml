@@ -14,4 +14,7 @@
     <item
         type="id"
         name="labelHome" />
+    <item
+        type="id"
+        name="id_copyright" />
 </resources>

@@ -10,6 +10,6 @@
     <string name="textSubmit">Connecter</string>
      <string name="tweetit">Tweetit</string>
      <string name="copyright">Copyright</string>
-    
+     <string name="desc_copyright">bouton_copyright</string>
 
 </resources>

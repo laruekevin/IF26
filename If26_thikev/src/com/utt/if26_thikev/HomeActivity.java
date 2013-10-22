@@ -22,8 +22,9 @@ import android.view.Menu;
 import android.widget.Toast;
 
 public class HomeActivity extends FragmentActivity {
-	private String jsonResult;
+	
 	 private String url = "";
+	 private webservice ws = new webservice();
 	 private DonneesConnection dc = new DonneesConnection();
 	 @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +33,8 @@ public class HomeActivity extends FragmentActivity {
 		Intent intent = getIntent();
         Bundle bund = intent.getExtras();
 
-        url = "http://train.sandbox.eutech-ssii.com/messenger/login.php?email="+bund.getString("login")+"&password="+bund.getString("password");
-        accessWebService();
+        url= "http://train.sandbox.eutech-ssii.com/messenger/login.php?email="+bund.getString("login")+"&password="+bund.getString("password");
+        ws.accessWebService(url,this);
     
 	}
 
@@ -44,60 +45,8 @@ public class HomeActivity extends FragmentActivity {
 		return true;
 	}
 	
-	
-	// Async Task to access the web
-	 private class JsonReadTask extends AsyncTask<String, Void, String> {
-	  @Override
-	  protected String doInBackground(String... params) {
-	   HttpClient httpclient = new DefaultHttpClient();
-	   HttpPost httppost = new HttpPost(params[0]);
-	   try {
-	    HttpResponse response = httpclient.execute(httppost);
-	    jsonResult = inputStreamToString(
-	      response.getEntity().getContent()).toString();
-	   }
-	 
-	   catch (ClientProtocolException e) {
-	    e.printStackTrace();
-	   } catch (IOException e) {
-	    e.printStackTrace();
-	   }
-	   return null;
-	  }
-	 
-	  private StringBuilder inputStreamToString(InputStream is) {
-	   String rLine = "";
-	   StringBuilder answer = new StringBuilder();
-	   BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-	 
-	   try {
-	    while ((rLine = rd.readLine()) != null) {
-	     answer.append(rLine);
-	    }
-	   }
-	 
-	   catch (IOException e) {
-	    // e.printStackTrace();
-	    Toast.makeText(getApplicationContext(),
-	      "Error..." + e.toString(), Toast.LENGTH_LONG).show();
-	   }
-	   return answer;
-	  }
-	 
-	  @Override
-	  protected void onPostExecute(String result) {
-	   ListDrwaer();
-	  }
-	 }// end async task
-	 
-	 public void accessWebService() {
-	  JsonReadTask task = new JsonReadTask();
-	  // passes values for the urls string array
-	  task.execute(new String[] { url });
-	 }
-	 
-	 // build hash set for list view
-	 public void ListDrwaer() {
+	// build hash set for list view
+	 public void ListDrwaer(String jsonResult) {
 		 try {
 	            JSONObject jsonResponse = new JSONObject(jsonResult);
 
@@ -121,9 +70,7 @@ public class HomeActivity extends FragmentActivity {
 		    Intent intent = new Intent(this, MainActivity.class);
 	        startActivity(intent);
     	}
-	  
-	  
-	  
 	 }
+	
 	 
 }
