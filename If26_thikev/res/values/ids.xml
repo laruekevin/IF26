@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         type="id"
@@ -17,4 +17,20 @@
     <item
         type="id"
         name="id_copyright" />
+    
+     <item
+     	type="id"
+     	name="frag_action_bar" />
+    <item
+    	 type="id"
+     	 name="frag_tab_bar" />
+    <item
+	     type="id"
+    	 name="button_tweet" />
+    <item
+	     type="id"
+    	 name="button_home" />
+    <item
+	     type="id"
+    	 name="button_timeline" />
 </resources>

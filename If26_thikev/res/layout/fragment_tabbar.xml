@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:weightSum="9"
+    android:layout_margin="0dp"
+    android:padding="0dp"
+    >
+
+        <Button
+            android:id="@+id/button_timeline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:layout_weight="3"
+            android:padding="0dp"
+            android:text="@string/timeline_text" 
+            style="@android:style/Widget.Holo.Light.Tab"/>
+
+        <Button
+            android:id="@+id/button_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:layout_weight="3"
+            android:padding="0dp"
+            style="@android:style/Widget.Holo.Light.Tab"
+            android:text="@string/home_text" />
+
+        <Button
+            android:id="@+id/button_tweet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:layout_weight="3"
+            android:padding="0px"
+            style="@android:style/Widget.Holo.Light.Tab"
+            android:text="@string/tweet_text" />
+         
+</LinearLayout>

@@ -11,5 +11,8 @@
      <string name="tweetit">Tweetit</string>
      <string name="copyright">Copyright</string>
      <string name="desc_copyright">bouton_copyright</string>
+     <string name="timeline_text">Timeline</string>
+     <string name="home_text">Home</string>
+     <string name="tweet_text">Tweet</string>
 
 </resources>

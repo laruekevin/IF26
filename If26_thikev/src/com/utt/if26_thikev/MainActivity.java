@@ -31,10 +31,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener  {
 
 	 // Implement the OnClickListener callback
     public void onClick(View v) {
-        /*AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-        AlertDialog dialog = builder.create();
-        dialog.setMessage("Login : "+login.getText()+" Password :  "+password.getText());
-        dialog.show();*/
+
         Bundle bundle = new Bundle();
         bundle.putString("login",login.getText().toString());
         bundle.putString("password",password.getText().toString());
