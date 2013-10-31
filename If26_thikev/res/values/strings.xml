@@ -8,11 +8,14 @@
     <string name="password">"password : "</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="textSubmit">Connecter</string>
-     <string name="tweetit">Tweetit</string>
-     <string name="copyright">Copyright</string>
-     <string name="desc_copyright">bouton_copyright</string>
-     <string name="timeline_text">Timeline</string>
-     <string name="home_text">Home</string>
-     <string name="tweet_text">Tweet</string>
-
+	<string name="tweetit">Tweetit</string>
+	<string name="copyright">Copyright</string>
+	<string name="desc_copyright">bouton_copyright</string>
+	<string name="timeline_text">Timeline</string>
+	<string name="home_text">Home</string>
+	<string name="tweet_text">Tweet</string>
+	<string name="newtweet_text">New Tweet :</string>
+	<string name="send_text">Send</string>
+	<string name="text_empty"></string>
+     
 </resources>

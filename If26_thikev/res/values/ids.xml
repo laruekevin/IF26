@@ -33,4 +33,12 @@
     <item
 	     type="id"
     	 name="button_timeline" />
+    
+    <item
+   	 type="id"
+    	 name="frag_new_tweet" />
+       
+    <item
+   	 type="id"
+    	 name="frag_list_message" />
 </resources>

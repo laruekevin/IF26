@@ -8,8 +8,13 @@ import com.utt.if26_thikev.R;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.ListFragment;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Toast;
 
 public class HomeActivity extends FragmentActivity {
@@ -17,6 +22,10 @@ public class HomeActivity extends FragmentActivity {
 	 private String url = "";
 	 private webservice ws = new webservice();
 	 private DonneesConnection dc = new DonneesConnection();
+	 
+	 private SendTweetFragment stFragment; 
+	 private ListMessageFragment lmFragment;
+	 
 	 @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -24,9 +33,12 @@ public class HomeActivity extends FragmentActivity {
 		Intent intent = getIntent();
         Bundle bund = intent.getExtras();
 
-        url= "http://train.sandbox.eutech-ssii.com/messenger/login.php?email="+bund.getString("login")+"&password="+bund.getString("password");
+        url= DonneesConnection.urlRoot+"login.php?email="+bund.getString("login")+"&password="+bund.getString("password");
         ws.accessWebService(url,this);
     
+        setupFragments();
+        //showFragment(this.lmFragment);
+        
 	}
 
 	@Override
@@ -36,7 +48,7 @@ public class HomeActivity extends FragmentActivity {
 		return true;
 	}
 	
-	// build hash set for list view
+	// Build hash set for list view
 	 public void ListDrwaer(String jsonResult) {
 		 try {
 	            JSONObject jsonResponse = new JSONObject(jsonResult);
@@ -63,5 +75,45 @@ public class HomeActivity extends FragmentActivity {
     	}
 	 }
 	
+	 // Setup the fragment to show here
+	    private void setupFragments() {
+	        final FragmentManager fm = getSupportFragmentManager();
+	 
+	        this.stFragment = (SendTweetFragment) fm.findFragmentById(R.id.frag_new_tweet);
+	        if (this.stFragment == null) {
+	            this.stFragment = new SendTweetFragment();
+	        }
+	        
+	        this.lmFragment = (ListMessageFragment) fm.findFragmentById(R.id.frag_list_message);
+	        if (this.lmFragment == null) {
+	            this.lmFragment = new ListMessageFragment();
+	        }
+	 
+	    }
+	 
+	    //Show fragment in parameters
+	    private void showFragment(final Fragment fragment) {
+	        if (fragment == null)
+	            return;
+	 
+	        final FragmentManager fm = getSupportFragmentManager();
+	        final FragmentTransaction ft = fm.beginTransaction();
+	        // We can also animate the changing of fragment
+	        ft.setCustomAnimations(android.R.anim.slide_in_left,
+	                android.R.anim.slide_out_right);
+	 
+	        ft.replace(R.id.frameLayout, fragment);
+	 
+	        ft.commit();
+	    }
+	 
+	    //Method which swap fragments -> Used in XML files
+	    public void goToNewTweetFragment(View v) {
+	        showFragment(this.stFragment);
+	    }
+	    
+	    public void goToListMessageFragment(View v) {
+	        showFragment(this.lmFragment);
+	    }
 	 
 }

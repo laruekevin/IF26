@@ -11,13 +11,14 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
 
 public class webservice {
 	private String jsonResult;
-	private HomeActivity ha=null;
+	private Activity ha=null;
 	
 	// Async Task to access the web
 		 private class JsonReadTask extends AsyncTask<String, Void, String> {
@@ -60,12 +61,12 @@ public class webservice {
 		 
 		  @Override
 		  protected void onPostExecute(String result) {
-			 
-		   ha.ListDrwaer(jsonResult);
+			HomeActivity home = (HomeActivity) ha; 
+			home.ListDrwaer(jsonResult);
 		  }
 		 }// end async task
 		 
-		 public void accessWebService(String url,HomeActivity homa) {
+		 public void accessWebService(String url,Activity homa) {
 		  ha=homa;
 		  JsonReadTask task = new JsonReadTask();
 		  // passes values for the urls string array

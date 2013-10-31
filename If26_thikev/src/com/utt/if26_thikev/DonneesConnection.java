@@ -4,6 +4,7 @@ public class DonneesConnection {
 
     boolean error;
     String token;
+    static String urlRoot = "http://train.sandbox.eutech-ssii.com/messenger/"; 
 
     public boolean getError() {
         return error;
